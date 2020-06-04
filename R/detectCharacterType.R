@@ -49,7 +49,8 @@ detectAllCharacters<-function(tdObject, repeatsAsDiscrete=TRUE, cutoff=0.1) {
 #' @return Matrix with only discrete or continuous characters
 #' @examples
 #' data(anolis)
-#' aType<-detectAllCharacters(anolis$dat)
+#' td <- make.treedata(anolis$phy, anolis$dat)
+#' aType<-detectAllCharacters(td)
 #' filterMatrix(anolis$dat, aType, "discrete")
 #' @export
 
