@@ -2,12 +2,12 @@
 % Please edit documentation in R/detectCharacterType.R
 \name{detectAllCharacters}
 \alias{detectAllCharacters}
-\title{Apply detectCharacterType over an entire matrix}
+\title{Apply detectCharacterType over a treedata object}
 \usage{
-detectAllCharacters(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1)
+detectAllCharacters(tdObject, repeatsAsDiscrete = TRUE, cutoff = 0.1)
 }
 \arguments{
-\item{mat}{A matrix of data}
+\item{tdObject}{A \code{treedata} object}
 
 \item{repeatsAsDiscrete}{If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff}
 
@@ -17,9 +17,10 @@ detectAllCharacters(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1)
 Vector of either "discrete" or "continuous" for each variable in matrix
 }
 \description{
-Apply detectCharacterType over an entire matrix
+Apply detectCharacterType over a treedata object
 }
 \examples{
 data(anolis)
-detectAllCharacters(anolis$dat)
+td <- make.treedata(anolis$phy, anolis$dat)
+detectAllCharacters(td)
 }

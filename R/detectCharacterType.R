@@ -20,18 +20,19 @@ detectCharacterType<-function(dat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
 	return(charType)
 }		# needless to say, this is not yet robust
 
-#' Apply detectCharacterType over an entire matrix
+#' Apply detectCharacterType over a treedata object
 #'
-#' @param mat A matrix of data
+#' @param tdObject A \code{treedata} object
 #' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff
 #' @param cutoff Cutoff value for deciding if numeric data might actually be descrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete
 #' @return Vector of either "discrete" or "continuous" for each variable in matrix
 #' @examples
 #' data(anolis)
-#' detectAllCharacters(anolis$dat)
+#' td <- make.treedata(anolis$phy, anolis$dat)
+#' detectAllCharacters(td)
 #' @export
-detectAllCharacters<-function(mat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
-  mat <- as.matrix(mat)
+detectAllCharacters<-function(tdObject, repeatsAsDiscrete=TRUE, cutoff=0.1) {
+  mat <- as.matrix(tdObject$dat)
 	nchar<-dim(mat)[2]
 	result<-numeric(nchar)
 	for(i in 1:nchar) {
